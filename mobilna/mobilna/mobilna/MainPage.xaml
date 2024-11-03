@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobilna.MainPage">
+
+    <StackLayout BackgroundColor="#90EE90">
+        <Label Text="Wizyta u weterynarza" Padding="10" BackgroundColor="#2E8B57" FontSize="Large"/>
+        <Entry Placeholder="Imię i nazwisko właściciela" x:Name="nameAndSurnameEntry"/>
+        <Label Text="Gatunek"/>
+        <StackLayout HeightRequest="200">
+            <ListView RowHeight="40" x:Name="animalsListView" HasUnevenRows="True" ItemTapped="AnimalsListView_ItemTapped">
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pies</x:String>
+                        <x:String>Kot</x:String>
+                        <x:String>Świnka morska</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+        </StackLayout>       
+        <FlexLayout>
+            <Label Text="{Binding Source={x:Reference ageSlider}, Path=Value, StringFormat='Ile ma lat? {0:0}'}"/>
+            <Slider Maximum="20" Value="0" FlexLayout.Grow="1" x:Name="ageSlider"/>
+        </FlexLayout>
+        <Entry Placeholder="Cel wizyty" x:Name="purposeEntry"/>
+        <TimePicker Time="16:00" x:Name="timePicker"/>
+        <Button Text="OK" Clicked="Button_Clicked"/>
+    </StackLayout>
+
+</ContentPage>
+
